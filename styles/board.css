@@ -20,9 +20,8 @@
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
 
-    width: 500px;
+    width: min(500px, 100%); /* ← was hardcoded 500px */
     background-color: gray;
-
 }
 
 body {

@@ -17,6 +17,7 @@ let best = null;
 best_val.textContent = "-";
 let startTime = null;
 let timer = null;
+
 function startTimer() {
     startTime = Date.now();
     timer = setInterval(() => {
@@ -24,10 +25,12 @@ function startTimer() {
         time_val.textContent = elapsed + "s";
     }, 1000);
 }
+
 function stopTimer() {
     clearInterval(timer);
     timer = null;
 }
+
 const states = {
     start: () => {
         startTimer();
@@ -54,6 +57,7 @@ const states = {
     },
     flag: (mine_count) => { flag_val.textContent = mine_count; }
 };
+
 const container = document.getElementById("board-container");
 const redo_button = document.getElementById("redo");
 const board = document.createElement("div");
@@ -81,3 +85,5 @@ restart_button.addEventListener('click', () => {
     end_screen.style.display = "none";
     game.reset();
 });
+
+flag_val.textContent = game.mine_count;

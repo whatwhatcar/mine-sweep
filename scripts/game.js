@@ -91,6 +91,7 @@ export function create({ width, height, mine_count, board_element, actions }) {
             const cell = cell_elements[inner];
             delete cell.dataset.n;
             cell.classList.replace("revealed", "hidden");
+            cell.classList.replace("flagged", "hidden");
             cell.textContent = "";
         }
         dirty = [];
@@ -137,7 +138,7 @@ export function create({ width, height, mine_count, board_element, actions }) {
         if (reveal_count === safe_cells) {
             game_over = true;
             actions.win();
-            return; 
+            return;
         }
     }
 
@@ -161,6 +162,8 @@ export function create({ width, height, mine_count, board_element, actions }) {
         if (visit[outer] === 0) {
             visit[outer] = 2;
             actions.flag(--mines_left);
+            dirty.push(inner);
+
             cell.classList.replace("hidden", "flagged");
             return;
         }
