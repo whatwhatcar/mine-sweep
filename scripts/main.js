@@ -32,6 +32,9 @@ function stopTimer() {
 }
 
 const states = {
+    init: (mine_count) =>  {
+        flag_val.textContent = mine_count;
+    },
     start: () => {
         startTimer();
     },
@@ -68,6 +71,7 @@ const game = create({
     mine_count: 3,
     board_element: board,
     actions: {
+        init: states.init,
         start: states.start,
         win: states.win,
         lose: states.lose,
@@ -86,4 +90,3 @@ restart_button.addEventListener('click', () => {
     game.reset();
 });
 
-flag_val.textContent = game.mine_count;

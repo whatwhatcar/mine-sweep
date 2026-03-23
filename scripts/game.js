@@ -214,6 +214,8 @@ export function create({ width, height, mine_count, board_element, actions }) {
         reveal_count = 0;
         board_ready = false;
         game_over = false;
+
+        actions.init(mines_left);
     }
 
     const on_contextmenu = event => { event.preventDefault(); right_click(event); };
